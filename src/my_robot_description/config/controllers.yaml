@@ -1,0 +1,36 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    position_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+position_controller:
+  ros__parameters:
+    joints:
+      - right_shoulder_pitch
+      - right_shoulder_roll
+      - right_elbow
+      - left_shoulder_pitch
+      - left_shoulder_roll
+      - left_elbow
+      - head_yaw
+      - head_pitch
+      - right_hip_pitch
+      - right_hip_roll
+      - right_hip_yaw
+      - right_knee
+      - right_ankle_pitch
+      - left_hip_pitch
+      - left_hip_roll
+      - left_hip_yaw
+      - left_knee
+      - left_ankle_pitch
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity

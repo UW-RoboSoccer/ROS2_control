@@ -1,0 +1,21 @@
+# ROS 2 build directories
+build/
+install/
+log/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE files
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
+
+# System files
+.DS_Store
+Thumbs.db 

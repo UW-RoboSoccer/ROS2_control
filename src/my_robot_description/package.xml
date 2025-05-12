@@ -1,0 +1,15 @@
+<package format="3">
+  <name>my_robot_description</name>
+  <version>0.1.0</version>
+  <description>Your humanoid robot for MuJoCo ROS 2</description>
+  <maintainer email="you@example.com">You</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>ros2_control</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>joint_trajectory_controller</exec_depend>
+  <exec_depend>joint_state_broadcaster</exec_depend>
+  <exec_depend>mujoco_ros2_control</exec_depend>
+</package>

@@ -1,0 +1,26 @@
+digraph G {
+"neck_pitch" -> "camera"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"torso" -> "neck_pitch"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"shin_2" -> "feet_2"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"knee_hip_connector_2" -> "shin_2"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"arm_connector" -> "elbow_2"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"arm_roll" -> "arm_connector"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"torso" -> "hip_roll"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"hip_roll" -> "hip_yaw_2"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"hip_yaw_2" -> "knee_hip_connector_2"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"torso" -> "arm_roll"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"shin" -> "feet"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"knee_hip_connector" -> "shin"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"arm_connector_right" -> "elbow"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"arm_roll_right" -> "arm_connector_right"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"torso" -> "part_1"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"part_1" -> "hip_yaw"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"hip_yaw" -> "knee_hip_connector"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"torso" -> "arm_roll_right"[label=" Broadcaster: default_authority\nAverage rate: 20.144\nBuffer length: 6.95\nMost recent transform: 679.094\nOldest transform: 672.144\n"];
+"feet_2" -> "feet_2_sole"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"feet" -> "feet_sole"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1746997359.3134124"[ shape=plaintext ] ;
+}->"torso";
+}
