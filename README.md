@@ -81,11 +81,3 @@ If you encounter any issues:
 2. Verify the workspace is built correctly
 3. Check that the controllers are loaded properly
 4. Ensure the joint names in the trajectory message match your robot's configuration
-
-## Contributing
-
-Please read our contributing guidelines before submitting pull requests.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
