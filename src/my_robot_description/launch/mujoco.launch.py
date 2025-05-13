@@ -2,6 +2,7 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from launch.actions import ExecuteProcess
 
 def generate_launch_description():
     pkg_path = get_package_share_directory('my_robot_description')
@@ -22,5 +23,14 @@ def generate_launch_description():
                 controller_yaml,
                 {'mujoco_model_path': mjcf_file}
             ]
+        ),
+        # Start the controllers
+        ExecuteProcess(
+            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'position_controller'],
+            output='screen'
+        ),
+        ExecuteProcess(
+            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'joint_state_broadcaster'],
+            output='screen'
         )
     ])
