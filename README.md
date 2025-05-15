@@ -2,25 +2,113 @@
 
 This repository contains a ROS2 robot control package with Mujoco simulation integration.
 
-## Prerequisites
+## Setup
 
-- WSL (Windows Subsystem for Linux)
-- ROS2 Humble
-- Mujoco ROS2 Control
+
+### WSL2 on Ubuntu 22.04 (Windows Subsystem for Linux)
+
+In administrator level powershell:
+1. Install WSL running Ubuntu 22.04
+```bash
+wsl --install -d Ubuntu-22.04
+```
+
+2. Set WSL2 as default (if not already)
+```bash
+wsl --set-default-version 2
+```
+
+3. Open WSL terminal and update packages
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+4. Install basic dev tools
+``` bash
+sudo apt install -y git curl wget build-essential
+```
+
+
+### ROS2 Humble
+1. Setup locale
+```bash
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+```
+
+2. Add ROS2 GPG keys
+```bash
+sudo apt install curl gnupg lsb-release
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+3. Add ROS2 apt repo
+```bash
+echo "deb [signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | \
+  sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+```
+
+4. Install ROS2
+``` bash
+sudo apt update
+sudo apt install ros-humble-desktop
+```
+
+5. Source ROS2 in shell Add to ~/.bashrc:
+``` bash
+source /opt/ros/humble/setup.bash
+```
+
+6. Install ROS2 build tools
+``` bash
+sudo apt install -y python3-colcon-common-extensions python3-rosdep
+sudo rosdep init
+rosdep update
+```
+
+
+### Mujoco ROS2 Control
+1. Install MuJoCo 3.3.2
+``` bash
+mkdir -p ~/.mujoco
+wget https://mujoco.org/download/mujoco-3.3.2-linux-x86_64.tar.gz
+tar -xvzf mujoco-3.3.2-linux-x86_64.tar.gz -C ~/.mujoco
+echo 'export MUJOCO_PY_MUJOCO_PATH=$HOME/.mujoco/mujoco-3.3.2' >> ~/.bashrc
+echo 'export MUJOCO_DIR=$HOME/.mujoco/mujoco-3.3.2' >> ~/.bashrc
+```
+
+2. Install dependencies
+``` bash
+sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3
+```
+
 
 ## Installation
 
-1. Clone the repository:
+1. In ~, clone the repository:
 ```bash
 git clone https://github.com/UW-RoboSoccer/ROS2_control.git
-cd ROS2_control
+cd ROS2_control/src
+```
+2. Clone MuJoCo control
+``` bash
+git clone https://github.com/moveit/mujoco_ros2_control.git
+cd ..
 ```
 
-2. Build the workspace:
+3. Install dependencies
+``` bash
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+4. Build the workspace:
 ```bash
-colcon build --packages-select my_robot_description
+colcon build --merge-install
 source install/setup.bash
 ```
+
 
 ## Running the Simulation
 
@@ -28,6 +116,27 @@ source install/setup.bash
 ```bash
 ros2 launch my_robot_description mujoco.launch.py
 ```
+
+
+#### IF SIM IS BLACK SCREEN
+Happens because of something with GPU? Do software rendering instead
+
+1. Install dependencies
+``` bash
+sudo apt update
+sudo apt install libosmesa6-dev libegl1-mesa-dev mesa-utils
+```
+
+2. Change environment variables to use software render instead of OpenGL
+``` bash
+export LIBGL_ALWAYS_SOFTWARE=1
+export MUJOCO_GL=osmesa
+glxinfo | grep "OpenGL renderer"
+```
+
+Should be able to launch as normal
+
+
 
 ### Terminal 2: Load and Control the Robot
 
