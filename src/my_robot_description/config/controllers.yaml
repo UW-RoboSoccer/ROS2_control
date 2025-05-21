@@ -8,6 +8,9 @@ controller_manager:
     position_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
+    imu_sensor_broadcaster:
+      type: imu_sensor_broadcaster/IMUSensorBroadcaster
+
 position_controller:
   ros__parameters:
     joints:
@@ -34,3 +37,8 @@ position_controller:
     state_interfaces:
       - position
       - velocity
+
+imu_sensor_broadcaster:
+  ros__parameters:
+    sensor_name: "torso_imu"
+    frame_id: "torso_imu"

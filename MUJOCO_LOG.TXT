@@ -133,3 +133,25 @@ ERROR: Load model error: Error: Error opening file 'install/my_robot_description
 Sun May 11 16:31:08 2025
 ERROR: Load model error: Error: Error opening file 'install/my_robot_description/share/my_robot_description/mjcf/meshes/arm_pitch.stl': No such file or directory
 
+Tue May 20 20:59:16 2025
+ERROR: Load model error: XML Error: Schema violation: unrecognized element
+Element 'user', line 219
+
+
+Tue May 20 21:02:29 2025
+ERROR: Load model error: Error: mass and inertia of moving bodies must be larger than mjMINVAL
+
+Tue May 20 21:04:30 2025
+ERROR: Load model error: Error: mass and inertia of moving bodies must be larger than mjMINVAL
+
+Tue May 20 21:05:17 2025
+ERROR: Load model error: Error: mass and inertia of moving bodies must be larger than mjMINVAL
+
+Tue May 20 23:45:05 2025
+ERROR: Load model error: Error: mesh 'arm_roll_right.stl' not found in geom 1
+Element name 'arm_roll_right_collision_0', id 1, line 40
+
+Tue May 20 23:49:03 2025
+ERROR: Load model error: Error: unrecognized name 'left_foot_ft_site' of sensorized object
+Element name 'left_foot_force', id 3, line 235
+

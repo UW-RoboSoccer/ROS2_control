@@ -96,6 +96,19 @@
 <inertia ixx="0.002970835357818262662" ixy="-6.4374503991326825769e-20"  ixz="1.3552527156068805425e-19" iyy="0.0054674464233138526589" iyz="0.00016559530147868575497" izz="0.0046088685677440829891" />
 </inertial>
 </link>
+<link name="torso_imu">
+  <inertial>
+    <mass value="0.01"/>
+    <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+  </inertial>
+</link>
+
+<joint name="torso_to_imu" type="fixed">
+  <origin xyz="0 0 0.1" rpy="0 0 0"/> <!-- Adjust location if needed -->
+  <parent link="torso"/>
+  <child link="torso_imu"/>
+</joint>
+
 
 <link name="arm_roll_right">
 <visual>
@@ -416,7 +429,7 @@
 </geometry>
 </collision>
 <inertial>
-<origin xyz="0.012355824367816485229 -4.5743758868432850286e-19 -0.016327850096648170025" rpy="0 0 0"/>
+<origin xyz="0.012355824367816485229 -4.5743758868432850286e-18 -0.016327850096648170025" rpy="0 0 0"/>
 <mass value="0.010094408194960852176" />
 <inertia ixx="1.3722342858736314022e-06" ixy="0"  ixz="5.5310800500133552972e-07" iyy="2.0396387822108783753e-06" iyz="0" izz="1.2545966401404396629e-06" />
 </inertial>
@@ -491,6 +504,7 @@
 </inertial>
 </link>
 
+
 <joint name="leg_right_sole_joint_fixed" type="fixed">
 <origin xyz="0 0.03 0.0275" rpy="1.57079632679 1.57079632679 0" />
 <axis xyz="1 0 0"/>
@@ -498,6 +512,7 @@
 <parent link="feet" />
 <child link="feet_sole" />
 </joint>
+
 
 <joint name="right_ankle_pitch" type="revolute">
 <origin xyz="0 -0.07621999999999998221 0" rpy="-3.141592653589793116 0 0" />
@@ -682,6 +697,8 @@
 </inertial>
 </link>
 
+
+
 <joint name="leg_left_sole_joint_fixed" type="fixed">
 <origin xyz="0 0.03 0.0275" rpy="1.57079632679 -1.57079632679 0" />
 <axis xyz="1 0 0"/>
@@ -738,7 +755,26 @@
 <ros2_control name="MujocoSystem" type="system">
   <hardware>
     <plugin>mujoco_ros2_control/MujocoSystem</plugin>
+    <!-- mjcf_file_path will be passed via launch file or as a param here -->
+    <param name="mjcf_file_path">$(find my_robot_description)/mjcf/robot.xml</param>
   </hardware>
+
+  <sensor name="torso_imu"> <!-- This is the key name the plugin uses -->
+    <state_interface name="orientation.x"/>
+    <state_interface name="orientation.y"/>
+    <state_interface name="orientation.z"/>
+    <state_interface name="orientation.w"/>
+    <state_interface name="angular_velocity.x"/>
+    <state_interface name="angular_velocity.y"/>
+    <state_interface name="angular_velocity.z"/>
+    <state_interface name="linear_acceleration.x"/>
+    <state_interface name="linear_acceleration.y"/>
+    <state_interface name="linear_acceleration.z"/>
+    <!-- NO mujoco_sensor_name PARAMETER -->
+    <param name="frame_id">torso_imu</param> <!-- Corresponds to your URDF link -->
+  </sensor>
+
+  
 
   <joint name="right_elbow">
     <command_interface name="position"/>
@@ -865,6 +901,7 @@
     <state_interface name="velocity"/>
     <state_interface name="effort"/>
   </joint>
+
 </ros2_control>
 
 
