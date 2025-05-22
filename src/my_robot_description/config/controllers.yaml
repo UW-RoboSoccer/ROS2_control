@@ -12,15 +12,13 @@ controller_manager:
       type: imu_sensor_broadcaster/IMUSensorBroadcaster
 
     right_foot_sensor:
-      type: sensor_broadcaster/SensorBroadcaster
+      type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
       sensor_name: right_foot_fz
-      interfaces: [ force.z ]
       frame_id: feet
 
     left_foot_sensor:
-      type: sensor_broadcaster/SensorBroadcaster
+      type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
       sensor_name: left_foot_fz
-      interfaces: [ force.z ]
       frame_id: feet_2
 
 
@@ -64,4 +62,4 @@ right_foot_sensor:
 left_foot_sensor:
   ros__parameters:
     sensor_name: "left_foot_fz"
-    frame_id:   "feet2"
+    frame_id:   "feet_2"

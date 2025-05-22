@@ -226,8 +226,8 @@
     <framequat name="torso_quat" objtype="site" objname="torso_imu_site"/>
     <gyro name="torso_gyro" site="torso_imu_site"/>
     <accelerometer name="torso_accel" site="torso_imu_site"/>
-    <touch name="right_foot_fz" site="right_foot_site"/>
-    <touch name="left_foot_fz"  site="left_foot_site"/>
+    <frameforce name="right_foot_fz" site="right_foot_site"/>
+    <frameforce name="left_foot_fz"  site="left_foot_site"/>
   </sensor>
 
 
