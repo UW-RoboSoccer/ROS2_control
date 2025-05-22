@@ -155,6 +155,10 @@
                   <!-- <site name="right_foot_ft_site"
                         pos="0 0.03 0.0275"
                         euler="0 1.57079632679 1.57079632679" /> -->
+
+                  <site name="right_foot_sole_fts_site"
+                        pos="0 0.03 0.0275"
+                        euler="0 1.5707963267948966 1.5707963267948966" />
                 </body>
               </body>
             </body>
@@ -190,6 +194,9 @@
                   <!-- <site name="left_foot_ft_site"
                         pos="0 0.03 0.0275"
                         euler="0 -1.57079632679 1.57079632679" /> -->
+                  <site name="left_foot_sole_fts_site"
+                        pos="0 0.03 0.0275"
+                        euler="0 -1.5707963267948966 1.5707963267948966" />
                 </body>
               </body>
             </body>
@@ -224,6 +231,13 @@
     <framequat name="torso_quat" objtype="site" objname="torso_imu_site"/>
     <gyro name="torso_gyro" site="torso_imu_site"/>
     <accelerometer name="torso_accel" site="torso_imu_site"/>
+
+
+    <force name="right_foot_sole_force" site="right_foot_sole_fts_site"/>  <!-- REMOVED _fts here -->
+    <torque name="right_foot_sole_torque" site="right_foot_sole_fts_site"/> <!-- REMOVED _fts here -->
+  
+    <force name="left_foot_sole_force" site="left_foot_sole_fts_site"/>
+    <torque name="left_foot_sole_torque" site="left_foot_sole_fts_site"/>
   </sensor>
 
 

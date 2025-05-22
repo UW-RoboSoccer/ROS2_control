@@ -155,3 +155,8 @@ Tue May 20 23:49:03 2025
 ERROR: Load model error: Error: unrecognized name 'left_foot_ft_site' of sensorized object
 Element name 'left_foot_force', id 3, line 235
 
+Thu May 22 14:14:56 2025
+ERROR: Load model error: XML Error: Schema violation: unrecognized element
+Element 'sensorINVALID', line 227
+
+

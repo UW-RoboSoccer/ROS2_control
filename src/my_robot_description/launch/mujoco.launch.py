@@ -37,5 +37,15 @@ def generate_launch_description():
         ExecuteProcess(
             cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'imu_sensor_broadcaster'],
             output='screen'
+        ),
+
+        ExecuteProcess(
+            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'force_torque_sensor_broadcaster'],
+            output='screen'
+        ),
+
+        ExecuteProcess(
+            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'left_fts_broadcaster'],
+            output='screen'
         )
     ])

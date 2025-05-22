@@ -774,7 +774,26 @@
     <param name="frame_id">torso_imu</param> <!-- Corresponds to your URDF link -->
   </sensor>
 
-  
+  <sensor name="right_foot_sole_fts"> <!-- Name must end with _fts -->
+      <state_interface name="force.x"/>
+      <state_interface name="force.y"/>
+      <state_interface name="force.z"/>
+      <state_interface name="torque.x"/>
+      <state_interface name="torque.y"/>
+      <state_interface name="torque.z"/>
+      <param name="frame_id">feet_sole</param> <!-- This refers to your existing 'feet_sole' link -->
+  </sensor>
+
+
+  <sensor name="left_foot_sole_fts"> <!-- Name must end with _fts -->
+      <state_interface name="force.x"/>
+      <state_interface name="force.y"/>
+      <state_interface name="force.z"/>
+      <state_interface name="torque.x"/>
+      <state_interface name="torque.y"/>
+      <state_interface name="torque.z"/>
+      <param name="frame_id">feet_2_sole</param> <!-- This refers to your 'feet_2_sole' link -->
+    </sensor>
 
   <joint name="right_elbow">
     <command_interface name="position"/>

@@ -11,6 +11,13 @@ controller_manager:
     imu_sensor_broadcaster:
       type: imu_sensor_broadcaster/IMUSensorBroadcaster
 
+
+    force_torque_sensor_broadcaster:
+      type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
+
+    left_fts_broadcaster:
+      type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
+
 position_controller:
   ros__parameters:
     joints:
@@ -42,3 +49,15 @@ imu_sensor_broadcaster:
   ros__parameters:
     sensor_name: "torso_imu"
     frame_id: "torso_imu"
+
+
+force_torque_sensor_broadcaster:
+  ros__parameters:
+    sensor_name: "right_foot_sole_fts" # Must match the 'name' in URDF <sensor> tag
+    frame_id: "feet_sole"             # Must match the 'frame_id' in URDF <sensor> tag's param
+
+
+left_fts_broadcaster:
+  ros__parameters:
+    sensor_name: "left_foot_sole_fts"   # Must match the 'name' in URDF <sensor> tag
+    frame_id: "feet_2_sole"             # Must match the 'frame_id' in URDF <sensor> tag's param
