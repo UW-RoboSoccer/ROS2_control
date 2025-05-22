@@ -11,6 +11,17 @@ controller_manager:
     imu_sensor_broadcaster:
       type: imu_sensor_broadcaster/IMUSensorBroadcaster
 
+    right_foot_sensor:
+      type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
+      sensor_name: right_foot_fz
+      frame_id: feet
+
+    left_foot_sensor:
+      type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
+      sensor_name: left_foot_fz
+      frame_id: feet_2
+
+
 position_controller:
   ros__parameters:
     joints:
@@ -42,3 +53,13 @@ imu_sensor_broadcaster:
   ros__parameters:
     sensor_name: "torso_imu"
     frame_id: "torso_imu"
+
+right_foot_sensor:
+  ros__parameters:
+    sensor_name: "right_foot_fz"
+    frame_id:   "feet"
+
+left_foot_sensor:
+  ros__parameters:
+    sensor_name: "left_foot_fz"
+    frame_id:   "feet2"

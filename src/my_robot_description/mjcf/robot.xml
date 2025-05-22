@@ -152,9 +152,10 @@
                   <inertial pos="2.4065128818169668723e-17 0.024077118863380524844 0.016553739061179448266" quat="1.0 0.0 0.0 0.0" mass="0.086230150028128074724" diaginertia="2.9777680269156784e-05 0.0001430601373025348 0.00011808239944558669" />
                   <geom name="feet_collision_0" pos="1.3877787807814456755e-17 0.02999999999999999889 0.017824999999999986688" quat="0.5000000000000001 0.5 0.5 -0.4999999999999999" type="mesh" mesh="feet.stl" rgba="0 0 0 0" />
                   <geom name="feet_visual_0" pos="1.3877787807814456755e-17 0.02999999999999999889 0.017824999999999986688" quat="0.5000000000000001 0.5 0.5 -0.4999999999999999" material="feet_material" type="mesh" mesh="feet.stl" />
-                  <!-- <site name="right_foot_ft_site"
-                        pos="0 0.03 0.0275"
-                        euler="0 1.57079632679 1.57079632679" /> -->
+                  <geom name="right_foot_touch_geom"
+                    type="cylinder" size="0.001 0.001"
+                    pos="0 0 0.0275"          contype="1" conaffinity="0"/>
+                  <site name="right_foot_site" pos="0 0 0.0275"/>
                 </body>
               </body>
             </body>
@@ -187,9 +188,10 @@
                   <inertial pos="2.0595681866216054535e-17 0.024077118863380524844 0.016553739061179462144" quat="1.0 0.0 0.0 0.0" mass="0.086230150028128074724" diaginertia="2.9777680269156784e-05 0.0001430601373025348 0.00011808239944558669" />
                   <geom name="feet_2_collision_0" pos="1.0408340855860842566e-17 0.02999999999999999889 0.017825000000000000566" quat="0.5000000000000001 0.5 0.5 -0.4999999999999999" type="mesh" mesh="feet.stl" rgba="0 0 0 0" />
                   <geom name="feet_2_visual_0" pos="1.0408340855860842566e-17 0.02999999999999999889 0.017825000000000000566" quat="0.5000000000000001 0.5 0.5 -0.4999999999999999" material="feet_material" type="mesh" mesh="feet.stl" />
-                  <!-- <site name="left_foot_ft_site"
-                        pos="0 0.03 0.0275"
-                        euler="0 -1.57079632679 1.57079632679" /> -->
+                  <geom name="left_foot_touch_geom"
+                    type="cylinder" size="0.001 0.001"
+                    pos="0 0 0.0275"          contype="1" conaffinity="0"/>
+                  <site name="left_foot_site" pos="0 0 0.0275"/>
                 </body>
               </body>
             </body>
@@ -224,6 +226,8 @@
     <framequat name="torso_quat" objtype="site" objname="torso_imu_site"/>
     <gyro name="torso_gyro" site="torso_imu_site"/>
     <accelerometer name="torso_accel" site="torso_imu_site"/>
+    <touch name="right_foot_fz" site="right_foot_site"/>
+    <touch name="left_foot_fz"  site="left_foot_site"/>
   </sensor>
 
 

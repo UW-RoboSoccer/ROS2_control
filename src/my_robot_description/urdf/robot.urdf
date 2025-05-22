@@ -774,7 +774,25 @@
     <param name="frame_id">torso_imu</param> <!-- Corresponds to your URDF link -->
   </sensor>
 
-  
+<sensor name="right_foot_fz" type="force_torque">
+  <state_interface name="force.x"/>
+  <state_interface name="force.y"/>
+  <state_interface name="force.z"/>
+  <state_interface name="torque.x"/>
+  <state_interface name="torque.y"/>
+  <state_interface name="torque.z"/>
+  <param name="frame_id">feet</param>
+</sensor>
+
+<sensor name="left_foot_fz"  type="force_torque">
+  <state_interface name="force.x"/>
+  <state_interface name="force.y"/>
+  <state_interface name="force.z"/>
+  <state_interface name="torque.x"/>
+  <state_interface name="torque.y"/>
+  <state_interface name="torque.z"/>
+  <param name="frame_id">feet_2</param>
+</sensor>
 
   <joint name="right_elbow">
     <command_interface name="position"/>
