@@ -90,20 +90,16 @@ sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3
 1. In ~, clone the repository:
 ```bash
 git clone https://github.com/UW-RoboSoccer/ROS2_control.git
-cd ROS2_control/src
-```
-2. Clone MuJoCo control
-``` bash
-git clone https://github.com/moveit/mujoco_ros2_control.git
-cd ..
+git submodule init
+git submodule update --remote --merge
 ```
 
-3. Install dependencies
+2. Install dependencies
 ``` bash
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
-4. Build the workspace:
+3. Build the workspace:
 ```bash
 colcon build --merge-install
 source install/setup.bash
