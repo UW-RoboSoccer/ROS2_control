@@ -12,13 +12,13 @@ controller_manager:
       type: imu_sensor_broadcaster/IMUSensorBroadcaster
 
     right_foot_sensor:
-      type: generic_sensor_broadcaster/GenericSensorBroadcaster
+      type: sensor_broadcaster/SensorBroadcaster
       sensor_name: right_foot_fz
       interfaces: [ force.z ]
       frame_id: feet
 
     left_foot_sensor:
-      type: generic_sensor_broadcaster/GenericSensorBroadcaster
+      type: sensor_broadcaster/SensorBroadcaster
       sensor_name: left_foot_fz
       interfaces: [ force.z ]
       frame_id: feet_2
