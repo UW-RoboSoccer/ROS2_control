@@ -160,3 +160,9 @@ ERROR: Load model error: XML Error: Schema violation: unrecognized element
 Element 'sensorINVALID', line 227
 
 
+Fri May 23 22:42:39 2025
+ERROR: Load model error: Error: repeated name 'left_foot_sole_fts' in sensor
+
+Fri May 23 22:42:46 2025
+ERROR: Load model error: Error: repeated name 'left_foot_sole_fts' in sensor
+

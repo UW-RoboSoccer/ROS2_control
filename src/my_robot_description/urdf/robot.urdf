@@ -469,7 +469,7 @@
 <inertial>
 <origin xyz="-2.5610643071885378804e-19 -0.038109999999999998044 -0.013860790149757070897" rpy="0 0 0"/>
 <mass value="0.094218308738066483543" />
-<inertia ixx="8.3982763401949995412e-05" ixy="-2.3712054772358362856e-22"  ixz="8.5413292747961603499e-39" iyy="1.5906607997904013263e-05" iyz="3.2359305563074442641e-21" izz="7.7692342827549837315e-05" />
+<inertia ixx="8.3982763401949995412e-05" ixy="-2.3712054772358362856e-22"  ixz="8.5413292747959776414e-39" iyy="1.5906607997904013263e-05" iyz="3.2359305563074442641e-21" izz="7.7692342827549837315e-05" />
 </inertial>
 </link>
 
@@ -707,6 +707,7 @@
 <child link="feet_2_sole" />
 </joint>
 
+
 <joint name="left_ankle_pitch" type="revolute">
 <origin xyz="0 -0.07621999999999998221 0" rpy="3.141592653589793116 0 0" />
 <parent link="shin_2" />
@@ -735,7 +736,7 @@
 </joint>
 
 <joint name="left_hip_roll" type="revolute">
-<origin xyz="-0.022849889999999997703 0.012500000000000004163 -0.022899000000000002686" rpy="-0 1.570796326794896336 0" />
+<origin xyz="-0.022849889999999987295 0.012500000000000004163 -0.022899000000000002686" rpy="-0 1.570796326794896336 0" />
 <parent link="hip_roll" />
 <child link="hip_yaw_2" />
 <axis xyz="0 0 1"/>
@@ -744,7 +745,7 @@
 </joint>
 
 <joint name="left_hip_pitch" type="revolute">
-<origin xyz="0.040849999999999969669 0.041699969999999995929 -0.01235999999999999252" rpy="-1.570796326794896558 0 1.570796326794896558" />
+<origin xyz="0.040849999999999969669 0.041699969999999968173 -0.01235999999999999252" rpy="-1.570796326794896558 0 1.570796326794896558" />
 <parent link="torso" />
 <child link="hip_roll" />
 <axis xyz="0 0 1"/>
@@ -772,6 +773,16 @@
     <state_interface name="linear_acceleration.z"/>
     <!-- NO mujoco_sensor_name PARAMETER -->
     <param name="frame_id">torso_imu</param> <!-- Corresponds to your URDF link -->
+  </sensor>
+
+  <sensor name="torso_test_fts"> <!-- Test force sensor -->
+      <state_interface name="force.x"/>
+      <state_interface name="force.y"/>
+      <state_interface name="force.z"/>
+      <state_interface name="torque.x"/>
+      <state_interface name="torque.y"/>
+      <state_interface name="torque.z"/>
+      <param name="frame_id">torso_test</param>
   </sensor>
 
   <sensor name="right_foot_sole_fts"> <!-- Name must end with _fts -->

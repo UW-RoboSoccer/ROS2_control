@@ -40,6 +40,11 @@ def generate_launch_description():
         ),
 
         ExecuteProcess(
+            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'torso_test_fts_broadcaster'],
+            output='screen'
+        ),
+
+        ExecuteProcess(
             cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'force_torque_sensor_broadcaster'],
             output='screen'
         ),

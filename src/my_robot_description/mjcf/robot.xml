@@ -1,7 +1,7 @@
 <mujoco model="onshape">
   <default>
     <joint damping="1.084" armature="0.045" frictionloss="0.03" />
-    <geom condim="4" contype="1" conaffinity="15" friction="0.3 0.3 0.3" solref="0.001 2" margin="0.001"/>
+    <geom condim="4" contype="1" conaffinity="15" friction="1.0 1.0 1.0" solref="0.001 2" margin="0.001"/>
     <position kp="21.1" ctrlrange="-3.141592 3.141592" forcerange="-3 3"/>
     <equality solref="0.001 2" />
     <default class="visualgeom">
@@ -56,9 +56,9 @@
   <worldbody>
     <light directional="true" diffuse="0.4 0.4 0.4" specular="0.1 0.1 0.1" pos="0 0 5.0" dir="0 0 -1" castshadow="false" />
     <light directional="true" diffuse="0.6 0.6 0.6" specular="0.2 0.2 0.2" pos="0 0 4" dir="0 0 -1" />
-    <geom name="ground" type="plane" pos="0 0 0" size="10 10 0.001" quat="1 0 0 0" material="matplane" condim="3" conaffinity="15" />
-    <body name="root" pos="0 0 0.22288997999999996" quat="1 0 0 0">
-      <freejoint name="root" />
+    <geom name="ground" type="plane" pos="0 0 0" size="10 10 0.001" quat="1 0 0 0" material="matplane" condim="6" conaffinity="15" friction="1.0 1.0 1.0" />
+    <body name="root" pos="0 0 0.22" quat="1 0 0 0">
+      <!-- <freejoint name="root" /> -->
       <site name="root_site" pos="0 0 0" quat="1 0 0 0" />
       <body name="torso" pos="0 0 0" quat="0 0 0 1">
         <inertial pos="-3.7022483872835717735e-17 0.049013245062467639124 0.061076268675456742152" quat="1.0 0.0 0.0 0.0" mass="1.604816123528635563" diaginertia="0.0029708353578182627 0.005467446423313853 0.004608868567744083" />
@@ -76,6 +76,8 @@
         <geom name="torso_visual_5" pos="-0.0082000000000000544675 0.054199969999999972337 -0.012360000000000002929" quat="3.749399456654644e-33 6.123233995736766e-17 1.0 6.123233995736766e-17" material="hip_pitch_material" type="mesh" mesh="hip_pitch.stl" />
         <body name="torso_imu_body" pos="0 0 0.1"> <!-- Adjusted position to be closer to torso -->
           <site name="torso_imu_site" size="0.01"/>
+          <!-- Test force sensor site on torso -->
+          <site name="torso_test_fts_site" pos="0.1 0 0" />
         </body>
         <body name="arm_roll_right" pos="-0.070850000000000037947 0.040502249999999927199 0.12166519000000000639" quat="0.5000000000000001 0.5 0.49999999999999983 0.5">
           <joint name="right_shoulder_pitch" type="hinge" axis="0 0 -1" />
@@ -147,18 +149,12 @@
                 <geom name="shin_collision_1" pos="6.9388939039072283776e-18 -0.086329999999999990079 -0.013825000000000003952" quat="0.5000000000000001 -0.5 -0.5 -0.4999999999999999" type="mesh" mesh="ankle_pitch.stl" rgba="0 0 0 0" />
                 <geom name="shin_visual_0" pos="6.9388939039072283776e-18 -0.038110000000000004983 -0.013825000000000003952" quat="0.5000000000000001 -0.5 -0.5 -0.4999999999999999" material="knee_material" type="mesh" mesh="knee.stl" />
                 <geom name="shin_visual_1" pos="6.9388939039072283776e-18 -0.086329999999999990079 -0.013825000000000003952" quat="0.5000000000000001 -0.5 -0.5 -0.4999999999999999" material="ankle_pitch_material" type="mesh" mesh="ankle_pitch.stl" />
-                <body name="feet" pos="0 -0.07621999999999998221 0" quat="6.123233995736766e-17 -1.0 7.547468613682779e-49 1.232595164407831e-32">
+                <body name="feet" pos="0 -0.07621999999999998221 0" quat="6.123233995736766e-17 1.0 7.547468613682779e-49 1.232595164407831e-32">
                   <joint name="right_ankle_pitch" type="hinge" axis="0 0 1" />
                   <inertial pos="2.4065128818169668723e-17 0.024077118863380524844 0.016553739061179448266" quat="1.0 0.0 0.0 0.0" mass="0.086230150028128074724" diaginertia="2.9777680269156784e-05 0.0001430601373025348 0.00011808239944558669" />
                   <geom name="feet_collision_0" pos="1.3877787807814456755e-17 0.02999999999999999889 0.017824999999999986688" quat="0.5000000000000001 0.5 0.5 -0.4999999999999999" type="mesh" mesh="feet.stl" rgba="0 0 0 0" />
                   <geom name="feet_visual_0" pos="1.3877787807814456755e-17 0.02999999999999999889 0.017824999999999986688" quat="0.5000000000000001 0.5 0.5 -0.4999999999999999" material="feet_material" type="mesh" mesh="feet.stl" />
-                  <!-- <site name="right_foot_ft_site"
-                        pos="0 0.03 0.0275"
-                        euler="0 1.57079632679 1.57079632679" /> -->
-
-                  <site name="right_foot_sole_fts_site"
-                        pos="0 0.03 0.0275"
-                        euler="0 1.5707963267948966 1.5707963267948966" />
+                  <site name="right_foot_sole_fts_site" pos="0 0.03 -0.018" size="0.01" />
                 </body>
               </body>
             </body>
@@ -191,12 +187,7 @@
                   <inertial pos="2.0595681866216054535e-17 0.024077118863380524844 0.016553739061179462144" quat="1.0 0.0 0.0 0.0" mass="0.086230150028128074724" diaginertia="2.9777680269156784e-05 0.0001430601373025348 0.00011808239944558669" />
                   <geom name="feet_2_collision_0" pos="1.0408340855860842566e-17 0.02999999999999999889 0.017825000000000000566" quat="0.5000000000000001 0.5 0.5 -0.4999999999999999" type="mesh" mesh="feet.stl" rgba="0 0 0 0" />
                   <geom name="feet_2_visual_0" pos="1.0408340855860842566e-17 0.02999999999999999889 0.017825000000000000566" quat="0.5000000000000001 0.5 0.5 -0.4999999999999999" material="feet_material" type="mesh" mesh="feet.stl" />
-                  <!-- <site name="left_foot_ft_site"
-                        pos="0 0.03 0.0275"
-                        euler="0 -1.57079632679 1.57079632679" /> -->
-                  <site name="left_foot_sole_fts_site"
-                        pos="0 0.03 0.0275"
-                        euler="0 -1.5707963267948966 1.5707963267948966" />
+                  <site name="left_foot_sole_fts_site" pos="0 0.03 -0.018" size="0.01" />
                 </body>
               </body>
             </body>
@@ -232,13 +223,15 @@
     <gyro name="torso_gyro" site="torso_imu_site"/>
     <accelerometer name="torso_accel" site="torso_imu_site"/>
 
+    <!-- Test force sensor on torso -->
+    <force name="torso_test_force" site="torso_test_fts_site"/>
+    <torque name="torso_test_torque" site="torso_test_fts_site"/>
 
-    <force name="right_foot_sole_force" site="right_foot_sole_fts_site"/>  <!-- REMOVED _fts here -->
-    <torque name="right_foot_sole_torque" site="right_foot_sole_fts_site"/> <!-- REMOVED _fts here -->
-  
+    <force name="right_foot_sole_force" site="right_foot_sole_fts_site"/>
+    <torque name="right_foot_sole_torque" site="right_foot_sole_fts_site"/>
+
     <force name="left_foot_sole_force" site="left_foot_sole_fts_site"/>
     <torque name="left_foot_sole_torque" site="left_foot_sole_fts_site"/>
   </sensor>
-
 
 </mujoco>
